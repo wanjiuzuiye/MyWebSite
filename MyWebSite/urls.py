@@ -21,5 +21,32 @@ from myapp import views
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
+    #首页
     path("index/", views.index),
+
+    #UI界面
+    path("ui-features/buttons/", views.buttons),
+    path("ui-features/typography/", views.typography),
+
+    #按钮区
+    path("forms/basic_elements/", views.basic_elements),
+
+    #图表区
+    path("charts/chartjs/", views.chartjs),
+
+    #表格区
+    path("tables/basic-table/", views.basic_table),
+
+    #图表区
+    path("icons/mdi/", views.mdi),
+
+    #用户区
+    path("samples/login/l", views.l),
+    path("samples/login-2/", views.login_2),
+    path("samples/register/", views.register),
+    path("samples/register-2/", views.register_2),
+    path("samples/lock-screen/", views.lock_screen),
+
+    #文档
+    path("documentation/documentation/", views.documentation),
 ]

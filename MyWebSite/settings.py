@@ -75,9 +75,17 @@ WSGI_APPLICATION = "MyWebSite.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
+    # "default": {
+    #     "ENGINE": "django.db.backends.sqlite3",
+    #     "NAME": BASE_DIR / "db.sqlite3",
+    # }
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "QianYun",     # 数据库名
+        "USER": "root",
+        "PASSWORD": "wjzy1345760390",
+        "HOST": "127.0.0.1",   # 主机名
+        "PORT": "3306",
     }
 }
 
@@ -104,7 +112,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+# LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = "UTC"
 
