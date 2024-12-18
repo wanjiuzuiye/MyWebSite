@@ -22,7 +22,7 @@ from myapp import views
 urlpatterns = [
     # path("admin/", admin.site.urls),
     #首页
-    path("index/", views.index),
+    path("", views.index),
 
     #UI界面
     path("ui-features/buttons/", views.buttons),

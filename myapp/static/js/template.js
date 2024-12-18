@@ -10,21 +10,25 @@
     //Add active class to nav-link based on url dynamically
     //Active class can be hard coded directly in html file also as required
     function addActiveClass(element) {
-      // »ñÈ¡µ±Ç°Ò³ÃæÂ·¾¶µÄ×îºóÒ»²¿·Ö
+      // è·å–å½“å‰é¡µé¢è·¯å¾„çš„æœ€åä¸€éƒ¨åˆ†
       var current = location.pathname.split('/').filter(Boolean).pop() || '';
-    
-      // È¥µô²éÑ¯²ÎÊı½øĞĞ±È½Ï
+      console.log(current);
+ 
+      // å»æ‰æŸ¥è¯¢å‚æ•°è¿›è¡Œæ¯”è¾ƒ
       var href = element.attr('href').split('?')[0]; 
-    
-      if (current === '' && href.indexOf('index.html') !== -1) {
-        // ¸ùÂ·¾¶»òÊ×Ò³
+      href = href.replace(/\//g, '');
+      
+      // console.log(href);
+      if (current === '' && href.length == 0) {
+        // æ ¹è·¯å¾„æˆ–é¦–é¡µ
+        console.log('success')
         element.parents('.nav-item').last().addClass('active');
         if (element.parents('.sub-menu').length) {
-          element.closest('.collapse').addClass('show'); // Õ¹¿ª×Ó²Ëµ¥
+          element.closest('.collapse').addClass('show'); // å±•å¼€å­èœå•
           element.addClass('active');
         }
-      } else if (href.indexOf(current) !== -1) {
-        // ÆäËûÒ³Ãæ
+      } else if (href.indexOf(current) !== -1 && current !== '') {
+        // å…¶ä»–é¡µé¢
         element.parents('.nav-item').last().addClass('active');
         if (element.parents('.sub-menu').length) {
           element.closest('.collapse').addClass('show');
@@ -36,9 +40,9 @@
       }
     }
     
-    // È·±£ÎÄµµ¼ÓÔØÍê±ÏºóÖ´ĞĞ
+    // ç¡®ä¿æ–‡æ¡£åŠ è½½å®Œæ¯•åæ‰§è¡Œ
     $(document).ready(function() {
-      // ±éÀú sidebar ÖĞµÄÃ¿¸ö <a> ÔªËØ£¬Ó¦ÓÃ active Àà
+      // éå† sidebar ä¸­çš„æ¯ä¸ª <a> å…ƒç´ ï¼Œåº”ç”¨ active ç±»
       $('.nav li a').each(function() {
         var $this = $(this);
         addActiveClass($this);

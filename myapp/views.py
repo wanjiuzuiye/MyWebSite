@@ -1,9 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,JsonResponse
 # Create your views here.
 
+"""主页视图"""
 def index(request):
-    return render(request, 'index.html')
+    # 模拟数据
+    total_data = 220 
+    total_used = 180
+    today_data = 100
+    today_used = 50
+    contex = {
+        'total_data': total_data,
+        'total_used': total_used,
+        'today_data': today_data,
+        'today_used': today_used,
+    }
+    return render(request, 'index.html', contex)
 
 def buttons(request):
     return render(request, 'pages/ui-features/buttons.html')
