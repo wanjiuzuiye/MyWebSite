@@ -244,6 +244,9 @@
                 var chartDom = document.getElementById('chartest2');
                 var myChart2 = echarts.init(chartDom);
                 var option;
+                window.addEventListener('resize', function() {
+                      myChart2.resize();
+                    });
 
                 option = {
                   tooltip: {

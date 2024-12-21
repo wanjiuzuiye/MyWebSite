@@ -42,8 +42,8 @@ def segmentation(request):
         return render(request, 'pages/remote_sensing_image/segmentation.html',{'form':form})
     return redirect('segmentation.html')
 
-def typography(request):
-    return render(request, 'pages/ui-features/typography.html')
+def model_analysis(request):
+    return render(request, 'pages/remote_sensing_image/model_analysis.html')
 
 def basic_elements(request):
     return render(request, 'pages/forms/basic_elements.html')

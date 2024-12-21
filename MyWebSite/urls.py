@@ -28,7 +28,7 @@ urlpatterns = [
 
     #遥感分割界面
     path("remote_sensing_image/segmentation/", remote_sensing_images.segmentation),
-    path("remote_sensing_image/segmentation/", remote_sensing_images.typography),
+    path("remote_sensing_image/analysis/", remote_sensing_images.model_analysis),
 
     #按钮区
     path("forms/basic_elements/", remote_sensing_images.basic_elements),

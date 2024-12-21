@@ -1,0 +1,436 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">各模型IoU与参数量</p>
+            <!-- <div id="cash-deposits-chart-legend" class="d-flex justify-content-center pt-3"></div>
+            <canvas id="cash-deposits-chart"></canvas> -->
+            <div id="chart" style="width: 100%;height: 450px;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">各模型性能表现面积图</p>
+          <div id="chart2" style="width: 100%;height: 450px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">LoveDA数据集上详细数据</p>
+          <table class="table table-hover table-bordered">
+            <thead>
+              <tr class="table-info">
+                <th scope="col">Decoder</th>
+                <th scope="col">Encoder</th>
+                <th scope="col">mIoU</th>
+                <th scope="col">mF1</th>
+                <th scope="col">BG</th>
+                <th scope="col">BU</th>
+                <th scope="col">RO</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="table-info">
+                <td>UperNet</td>
+                <td>ConvNeXt</td>
+                <td>36.81</td>
+                <td>52.97</td>
+                <td>45.51</td>
+                <td>30.48</td>
+                <td>45.53</td>
+              </tr>
+              <tr class="table-info">
+                <td>UperNet</td>
+                <td>ResNet50</td>
+                <td>32.86</td>
+                <td>48.34</td>
+                <td>32.23</td>
+                <td>48.15</td>
+                <td>38.97</td>
+              </tr>
+              <tr class="table-info">
+                <td>DeepLab V3+</td>
+                <td>ResNet50</td>
+                <td>34.60</td>
+                <td>50.72</td>
+                <td>43.55</td>
+                <td>47.32</td>
+                <td>41.17</td>
+              </tr>
+              <tr class="table-info">
+                <td>segformer</td>
+                <td>Mix Vit</td>
+                <td>43.16</td>
+                <td>59.75</td>
+                <td>50.71</td>
+                <td>49.89</td>
+                <td>46.12</td>
+              </tr>
+              <tr class="table-success">
+                <td>UperNet</td>
+                <th scope="row">Samba(Ours)</th>
+                <th scope="row">47.11</th>
+                <th scope="row">63.17</th>
+                <th scope="row">51.71</th>
+                <th scope="row">57.85</th>
+                <th scope="row">49.86</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial -->
+</div>
+<div class = "row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title">ISPRS Vaihingen数据集上详细数据</p>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="table-danger">
+              <th scope="col">Decoder</th>
+              <th scope="col">Encoder</th>
+              <th scope="col">mIoU</th>
+              <th scope="col">mF1</th>
+              <th scope="col">Building</th>
+              <th scope="col">Tree</th>
+              <th scope="col">Car</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-danger">
+              <td>UperNet</td>
+              <td>ConvNeXt</td>
+              <td>67.42</td>
+              <td>79.51</td>
+              <td>81.71</td>
+              <td>73.11</td>
+              <td>44.01</td>
+            </tr>
+            <tr class="table-danger">
+              <td>UperNet</td>
+              <td>ResNet50</td>
+              <td>70.25</td>
+              <td>81.70</td>
+              <td>83.35</td>
+              <td>77.48</td>
+              <td>45.52</td>
+            </tr>
+            <tr class="table-danger">
+              <td>DeepLab V3+</td>
+              <td>ResNet50</td>
+              <td>69.10</td>
+              <td>80.78</td>
+              <td>82.63</td>
+              <td>76.76</td>
+              <td>43.38</td>
+            </tr>
+            <tr class="table-danger">
+              <td>segformer</td>
+              <td>Mix Vit</td>
+              <td>70.23</td>
+              <td>81.66</td>
+              <td>85.77</td>
+              <td>75.87</td>
+              <td>46.01</td>
+            </tr>
+            <tr class="table-success">
+              <td>UperNet</td>
+              <th scope="row">Samba(Ours)</th>
+              <th scope="row">73.56</th>
+              <th scope="row">84.23</th>
+              <th scope="row">87.26</th>
+              <th scope="row">77.93</th>
+              <th scope="row">55.10</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<!-- content-wrapper ends -->
+<!-- partial -->
+</div>
+<div class = "row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title">ISPRS Potsdam数据集上详细数据</p>
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr class="table-warning">
+              <th scope="col">Decoder</th>
+              <th scope="col">Encoder</th>
+              <th scope="col">mIoU</th>
+              <th scope="col">mF1</th>
+              <th scope="col">Building</th>
+              <th scope="col">Tree</th>
+              <th scope="col">Car</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-warning">
+              <td>UperNet</td>
+              <td>ConvNeXt</td>
+              <td>74.70</td>
+              <td>85.22</td>
+              <td>85.64</td>
+              <td>62.09</td>
+              <td>79.42</td>
+            </tr>
+            <tr class="table-warning">
+              <td>UperNet</td>
+              <td>ResNet50</td>
+              <td>74.98</td>
+              <td>85.54</td>
+              <td>82.52</td>
+              <td>65.87</td>
+              <td>79.42</td>
+            </tr>
+            <tr class="table-warning">
+              <td>DeepLab V3+</td>
+              <td>ResNet50</td>
+              <td>75.23</td>
+              <td>85.70</td>
+              <td>82.76</td>
+              <td>66.54</td>
+              <td>80.18</td>
+            </tr>
+            <tr class="table-warning">
+              <td>segformer</td>
+              <td>Mix Vit</td>
+              <td>81.13</td>
+              <td>89.42</td>
+              <td>89.63</td>
+              <td>73.38</td>
+              <td>86.51</td>
+            </tr>
+            <tr class="table-success">
+              <td>UperNet</td>
+              <th scope="row">Samba(Ours)</th>
+              <th scope="row">82.29</th>
+              <th scope="row">90.15</th>
+              <th scope="row">90.06</th>
+              <th scope="row">74.98</th>
+              <th scope="row">87.61</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<!-- content-wrapper ends -->
+<!-- partial -->
+</div>
+{% endblock %}
+{% block js %}
+  <script src="{% static 'js/echarts.min.js' %}"></script>
+
+  <script type="text/javascript">
+    //各模型IoU与参数量
+    var chartDom = document.getElementById('chart');
+    var myChart = echarts.init(chartDom);
+    var option;
+    //自适应尺寸变化
+    window.addEventListener('resize', function() {
+                      myChart.resize();
+                    });
+
+    option = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          crossStyle: {
+            color: '#999'
+          }
+        }
+      },
+      toolbox: {
+        feature: {
+          dataView: { show: true, readOnly: false },
+          magicType: { show: true, type: ['line', 'bar'] },
+          restore: { show: true },
+          saveAsImage: { show: true }
+        }
+      },
+      legend: {
+        data: ['ISPRS Vaihingen', 'ISPRS Potsdam', 'Parameters(M)']
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: ['UperNet&ConvNeXt', 'UperNet&ResNet50', 'DeepLabV3+&ResNet50', 'Segformer&MixViT', 'Ours'],
+          axisPointer: {
+            type: 'shadow'
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          name: 'precision',
+        },
+        {
+          type: 'value',
+          name: 'Parameters',
+          axisLabel: {
+            formatter: '{value} M'
+          }
+        }
+      ],
+      series: [
+        {
+          name: 'ISPRS Vaihingen',
+          type: 'bar',
+          data: [
+            67.42, 70.25, 69.10, 70.23, 73.56
+          ]
+        },
+        {
+          name: 'ISPRS Potsdam',
+          type: 'bar',
+          data: [
+            74.70, 74.98, 75.23, 81.13, 82.29
+          ]
+        },
+        {
+          name: 'Parameters(M)',
+          type: 'line',
+          yAxisIndex: 1,
+          tooltip: {
+            valueFormatter: function (value) {
+              return value + ' M';
+            }
+          },
+          data: [59.2, 64.0, 41.2, 3.7, 51.9]
+        }
+      ]
+    };
+
+    option && myChart.setOption(option);
+  </script>
+  <script type="text/javascript">
+
+    $(document).ready(function(){
+      //各模型参数量面积图
+      var chartDom = document.getElementById('chart2');
+      var myChart2 = echarts.init(chartDom);
+      var option;
+      //自适应尺寸变化
+      window.addEventListener('resize', function() {
+                      myChart2.resize();
+                    });
+      option = {
+        tooltip: {
+          trigger: 'axis',
+          axisPointer: {
+            type: 'cross',
+            label: {
+              backgroundColor: '#6a7985'
+            }
+          }
+        },
+        legend: {
+          data: ['UperNet&ConvNeXt', 'UperNet&ResNet50', 'DeepLabV3+&ResNet50', 'Segformer&MixViT', 'Ours']
+        },
+        toolbox: {
+          feature: {
+            saveAsImage: {}
+          }
+        },
+        grid: {
+          left: '3%',
+          right: '4%',
+          bottom: '3%',
+          containLabel: true
+        },
+        xAxis: [
+          {
+            type: 'category',
+            boundaryGap: false,
+            data: ['mIoU', 'mF1', 'BG', 'BU', 'RO', 'WA', 'BA']
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: 'UperNet&ConvNeXt',
+            type: 'line',
+            stack: 'Total',
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [36.81,52.97,45.51,30.48,45.53,49.17,17.09]
+          },
+          {
+            name: 'UperNet&ResNet50',
+            type: 'line',
+            stack: 'Total',
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [32.86,48.34,32.23,48.15,38.97,37.66,14.17]
+          },
+          {
+            name: 'DeepLabV3+&ResNet50',
+            type: 'line',
+            stack: 'Total',
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [34.60,50.72,43.55,47.32,41.17,39.41,22.43]
+          },
+          {
+            name: 'Segformer&MixViT',
+            type: 'line',
+            stack: 'Total',
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [43.16,59.75,50.71,49.89,46.12,47.79,23.95]
+          },
+          {
+            name: 'Ours',
+            type: 'line',
+            stack: 'Total',
+            label: {
+              show: true,
+              position: 'top'
+            },
+            areaStyle: {},
+            emphasis: {
+              focus: 'series'
+            },
+            data: [47.11,63.17,51.71,57.85,49.86,59.85,21.93]
+          }
+        ]
+      };
+
+      option && myChart2.setOption(option);
+    });
+  </script>
+
+{% endblock %}
