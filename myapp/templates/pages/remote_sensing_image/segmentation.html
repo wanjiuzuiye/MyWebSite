@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+  <div class="content-wrapper">
+    <div class="row" style="margin-top: 5px;">
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">原始图片</p>
+              {% if form.instance.img_path %}
+              <img src="{{form.instance.img_path.url}}" alt="显示错误" id="source_img" style="height: auto; width: 80%; display: block; margin: 0 auto;" >
+              {% else %}
+              <img src="" id="source_img" style="height: 699px; width: 699px; display: block; margin: 0 auto;">
+              {% endif %}
+            <form id="input_img" style="margin-top: 24px;margin-left: 87px;" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" name="img_name"> -->
+                 {{form.img_path}}
+              </div>
+              <div class="form-group">
+                <input class="btn btn-primary" style="color: #fff;" type="submit" value="提交">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <p class="card-title">提取结果</p>           
+            <img src="" alt="" id="result_img" style="height: 699px;width: 699px; display: block; margin: 0 auto;">
+            <form style="margin-top: 75px;">
+              <div class="form-group" >
+                <input class="btn btn-primary" style="color: #fff;" type="submit" value="生成结果">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->
+  <!-- partial -->
+</div>
+{% endblock %}
+
+{% block js %}
+  <!-- Plugin js for this page-->
+  <script src="{% static 'plugins/vendors/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'plugins/vendors/datatables.net/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'plugins/vendors/datatables.net-bs4/dataTables.bootstrap4.js' %}"></script>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <!-- End plugin js for this page-->
+
+  <!-- Custom js for this page-->
+  <script src="{% static 'js/dashboard.js' %}"></script>
+  <script src="{% static 'js/data-table.js' %}"></script>
+  <script src="{% static 'js/jquery.dataTables.js' %}"></script>
+  <script src="{% static 'js/dataTables.bootstrap4.js' %}"></script>
+  <!-- End custom js for this page-->
+
+  <script src="{% static 'js/jquery.cookie.js' %}" type="text/javascript"></script>
+
+  <script type="text/javascript">
+    //根据图片大小，动态改变输入按钮的位置
+      window.onload = function() {
+      var source = document.getElementById('source_img');
+      var result = document.getElementById('input_img');
+      update();
+      window.addEventListener('resize',update);
+      function update() {
+        var sourceMarginLeft = parseInt(window.getComputedStyle(source).marginLeft);
+        console.log(sourceMarginLeft)
+        result.style.marginLeft = sourceMarginLeft + 'px';
+      }
+    };
+  </script>
+
+
+{% endblock %}

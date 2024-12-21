@@ -17,36 +17,38 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from myapp import views
+from myapp.views import site_data ,dataset_analysis_page,remote_sensing_images,tools_page
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     # path("admin/", admin.site.urls),
     #首页
-    path("", views.index),
+    path("", site_data.show_site_data),
 
-    #UI界面
-    path("ui-features/buttons/", views.buttons),
-    path("ui-features/typography/", views.typography),
+    #遥感分割界面
+    path("remote_sensing_image/segmentation/", remote_sensing_images.segmentation),
+    path("remote_sensing_image/segmentation/", remote_sensing_images.typography),
 
     #按钮区
-    path("forms/basic_elements/", views.basic_elements),
+    path("forms/basic_elements/", remote_sensing_images.basic_elements),
 
     #图表区
-    path("charts/chartjs/", views.chartjs),
+    path("charts/chartjs/", tools_page.chartjs),
 
     #表格区
-    path("tables/basic-table/", views.basic_table),
+    path("tables/basic-table/", dataset_analysis_page.basic_table),
 
     #图表区
-    path("icons/mdi/", views.mdi),
+    path("icons/mdi/", dataset_analysis_page.mdi),
 
     #用户区
-    path("samples/login/l", views.l),
-    path("samples/login-2/", views.login_2),
-    path("samples/register/", views.register),
-    path("samples/register-2/", views.register_2),
-    path("samples/lock-screen/", views.lock_screen),
+    path("samples/login/l", dataset_analysis_page.l),
+    path("samples/login-2/", dataset_analysis_page.login_2),
+    path("samples/register/", dataset_analysis_page.register),
+    path("samples/register-2/", dataset_analysis_page.register_2),
+    path("samples/lock-screen/", dataset_analysis_page.lock_screen),
 
     #文档
-    path("documentation/documentation/", views.documentation),
-]
+    path("documentation/documentation/",dataset_analysis_page.documentation),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

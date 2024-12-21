@@ -12,7 +12,7 @@
     function addActiveClass(element) {
       // 获取当前页面路径的最后一部分
       var current = location.pathname.split('/').filter(Boolean).pop() || '';
-      console.log(current);
+      // console.log(current);
  
       // 去掉查询参数进行比较
       var href = element.attr('href').split('?')[0]; 
@@ -21,7 +21,7 @@
       // console.log(href);
       if (current === '' && href.length == 0) {
         // 根路径或首页
-        console.log('success')
+        // console.log('success')
         element.parents('.nav-item').last().addClass('active');
         if (element.parents('.sub-menu').length) {
           element.closest('.collapse').addClass('show'); // 展开子菜单
